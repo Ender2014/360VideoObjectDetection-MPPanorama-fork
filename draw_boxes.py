@@ -5,10 +5,10 @@ import numpy as np
 
 from ultralytics.utils import ASSETS, yaml_load
 from ultralytics.utils.checks import check_yaml
+from settings import YAML_PATH
 
-CLASSES = yaml_load(check_yaml("coco128.yaml"))["names"]
+CLASSES = yaml_load(check_yaml(YAML_PATH))["names"]
 colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
-
 
 def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     """
@@ -23,7 +23,7 @@ def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
         x_plus_w (int): X-coordinate of the bottom-right corner of the bounding box.
         y_plus_h (int): Y-coordinate of the bottom-right corner of the bounding box.
     """
-
+    
     # create text for label and get colors
     label = f"{CLASSES[class_id]} ({confidence:.2f})"
     color = colors[class_id]

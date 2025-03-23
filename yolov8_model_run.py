@@ -9,12 +9,13 @@ from ultralytics.utils import ASSETS, yaml_load
 from ultralytics.utils.checks import check_yaml
 from draw_boxes import draw_bounding_box
 from PIL import Image
+from settings import YAML_PATH, MODEL_PATH
 
-CLASSES = yaml_load(check_yaml("coco128.yaml"))["names"]
+CLASSES = yaml_load(check_yaml(YAML_PATH))["names"]
 colors = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
 
-def detect(input_array, confidence_threshold=0.40, onnx_model="model-runs\\detect\\train\\weights\\yolov8n.onnx"):
+def detect(input_array, confidence_threshold=0.40, onnx_model=MODEL_PATH):
     """
     Function:
     Load ONNX model, perform inference, draw bounding boxes, and display the output image.

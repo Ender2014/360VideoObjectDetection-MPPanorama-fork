@@ -241,7 +241,7 @@ def calculate_IoU(box1, box2):
 
     return IoU
 
-def soft_nms(pano_detections_with_meta, sigma_one=0.3, sigma_two=0.6, IoU_minimum=0.5):
+def soft_nms(pano_detections_with_meta, sigma_one=0.3, sigma_two=0.6, IoU_minimum=0.4):
     '''
     Function:
         Take in all panorama detections and filter out those based on the soft NMS penalty described in the paper
